@@ -1,0 +1,11 @@
+{
+    "name" : "JSRutils",
+    "version" : "0.0.1",
+    "devDependencies" : {
+        "grunt" : "latest",
+        "grunt-contrib-jshint" : "latest",
+        "grunt-contrib-concat" : "latest",
+        "grunt-contrib-uglify" : "latest",
+        "grunt-mocha-test" : "latest"
+    }
+}
