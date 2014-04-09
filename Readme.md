@@ -15,6 +15,7 @@ Basic usage
 -----------
 
 **Numeral Module**
+
 Choosing the word form depending of a number:
 ```js
 var Numeral = JSRutils.Numeral,
