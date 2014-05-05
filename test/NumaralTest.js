@@ -8,8 +8,8 @@ var code = fs.readFileSync(path);
 vm.runInThisContext(code);
 var assert = require("assert");
 
-describe('JSRutils', function() {
-    it('covers JSRUtils', function() {
+describe('JSRutils common test', function () {
+    it('covers JSRutils.formatNumber', function () {
         assert.equal(JSRutils.formatNumber(5), "5");
         assert.equal(JSRutils.formatNumber(50), "50");
         assert.equal(JSRutils.formatNumber(5100), "5 100");
@@ -18,8 +18,8 @@ describe('JSRutils', function() {
     });
 });
 
-describe('Numeral test', function(){
-    it('covers JSRutils.Numeral.choosePlural', function(){
+describe('Numeral test', function () {
+    it('covers JSRutils.Numeral.choosePlural', function () {
         var numeral = JSRutils.Numeral,
             numbers = [-1, 1, 0, 2, -2, 3, 4, 5, 10, 11, 100, 101, 104, 109],
             nails = ["гвоздь", "гвоздь", "гвоздей", "гвоздя", "гвоздя", "гвоздя", "гвоздя", "гвоздей", "гвоздей", "гвоздей", "гвоздей", "гвоздь", "гвоздя", "гвоздей"],
@@ -33,7 +33,7 @@ describe('Numeral test', function(){
             }
         }
     });
-    it('covers JSRutils.Numeral.getPlural', function(){
+    it('covers JSRutils.Numeral.getPlural', function () {
         var numeral = JSRutils.Numeral,
             numbers = [-1, 2, 11, 1104, 1111],
             variants = ["гвоздь", "гвоздя", "гвоздей"],
@@ -51,7 +51,7 @@ describe('Numeral test', function(){
         }
         assert.equal(absence, numeral.getPlural(0, variants, absence));
     });
-    it('covers JSRutils.Numeral.sumString male variant', function(){
+    it('covers JSRutils.Numeral.sumString male variant', function () {
         var numbers = [0, 1, 2, 10, 12, 31, 104, 1000000, 1102003, 1100000001],
             variants = ['гвоздь', 'гвоздя', 'гвоздей'],
             nails = ['ноль гвоздей', 'один гвоздь', 'два гвоздя', 'десять гвоздей', 'двенадцать гвоздей', 'тридцать один гвоздь', 'сто четыре гвоздя', 'один миллион гвоздей', 'один миллион сто две тысячи три гвоздя', 'один миллиард сто миллионов один гвоздь'],
@@ -67,7 +67,7 @@ describe('Numeral test', function(){
         }
     });
 
-    it('covers JSRutils.Numeral.sumString female variant', function(){
+    it('covers JSRutils.Numeral.sumString female variant', function () {
         var numbers = [0, 1, 2, 10, 12, 31, 104, 1000000, 1102003, 1100000001],
             variants = ['шляпка', 'шляпки', 'шляпок'],
             nails = ['ноль шляпок', 'одна шляпка', 'две шляпки', 'десять шляпок', 'двенадцать шляпок', 'тридцать одна шляпка', 'сто четыре шляпки', 'один миллион шляпок', 'один миллион сто две тысячи три шляпки', 'один миллиард сто миллионов одна шляпка'],
@@ -83,7 +83,7 @@ describe('Numeral test', function(){
         }
     });
 
-    it('covers JSRutils.Numeral.getInWords', function() {
+    it('covers JSRutils.Numeral.getInWords', function () {
         var numeral = JSRutils.Numeral;
         assert.equal('сто два', numeral.getInWords(102));
         assert.equal('сто две тысячи', numeral.getInWordsInt(102000));
@@ -99,7 +99,7 @@ describe('Numeral test', function(){
         }
     });
 
-    it('covers JSRutils.Numeral.getRubles', function(){
+    it('covers JSRutils.Numeral.getRubles', function () {
         var rubles = [102, 1000, 0.2, 2.25, 0.01],
             strings = ['сто два рубля', 'одна тысяча рублей', 'двадцать копеек', 'два рубля двадцать пять копеек', 'одна копейка'],
             numeral = JSRutils.Numeral;
