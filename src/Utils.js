@@ -1,8 +1,8 @@
 /*global JSRutils*/
-(function() {
+(function () {
     "use strict";
     JSRutils.Utils = {
-        trim : function(string) {
+        trim: function (string) {
             if (typeof string.trim === "function") {
                 return string.trim();
             }
@@ -11,14 +11,23 @@
             }
             return string.replace(/^[\s\r\n]+|[\s\r\n]+$/g, "");
         },
-        arrayFilter : function(array, callback, thisArg) {
-            var result = [];
-            for (var i = 0, max = array.length; i < max; i++) {
-                if (typeof callback === "function" && callback.call(thisArg, array[i])) {
-                    result.push(array[i]);
-                }
+        arrayFilter: function (array, callback, thisArg) {
+            if (typeof array.filter === "function") {
+                return array.filter(callback, thisArg);
             }
-            return result;
+            else if (typeof callback === "function") {
+                var result = [];
+                var func = callback.bind(thisArg);
+                for (var i = 0, max = array.length; i < max; i++) {
+                    if (func(array[i])) {
+                        result.push(array[i]);
+                    }
+                }
+                return result;
+            }
+            else {
+                return [];
+            }
         }
     };
 })();
