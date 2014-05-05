@@ -1,20 +1,20 @@
 /*global describe, it, JSRutils*/
-"use strict";
+'use strict';
 var fs = require('fs');
 var vm = require('vm');
 var path = './build/JSRutils.min.js';
 
 var code = fs.readFileSync(path);
 vm.runInThisContext(code);
-var assert = require("assert");
+var assert = require('assert');
 
 describe('JSRutils common test', function () {
     it('covers JSRutils.formatNumber', function () {
-        assert.equal(JSRutils.formatNumber(5), "5");
-        assert.equal(JSRutils.formatNumber(50), "50");
-        assert.equal(JSRutils.formatNumber(5100), "5 100");
-        assert.equal(JSRutils.formatNumber(500000), "500 000");
-        assert.equal(JSRutils.formatNumber(5500000), "5 500 000");
+        assert.equal(JSRutils.formatNumber(5), '5');
+        assert.equal(JSRutils.formatNumber(50), '50');
+        assert.equal(JSRutils.formatNumber(5100), '5 100');
+        assert.equal(JSRutils.formatNumber(500000), '500 000');
+        assert.equal(JSRutils.formatNumber(5500000), '5 500 000');
     });
 });
 
@@ -22,13 +22,13 @@ describe('Numeral test', function () {
     it('covers JSRutils.Numeral.choosePlural', function () {
         var numeral = JSRutils.Numeral,
             numbers = [-1, 1, 0, 2, -2, 3, 4, 5, 10, 11, 100, 101, 104, 109],
-            nails = ["гвоздь", "гвоздь", "гвоздей", "гвоздя", "гвоздя", "гвоздя", "гвоздя", "гвоздей", "гвоздей", "гвоздей", "гвоздей", "гвоздь", "гвоздя", "гвоздей"],
+            nails = ['гвоздь', 'гвоздь', 'гвоздей', 'гвоздя', 'гвоздя', 'гвоздя', 'гвоздя', 'гвоздей', 'гвоздей', 'гвоздей', 'гвоздей', 'гвоздь', 'гвоздя', 'гвоздей'],
             plural;
         for (var i = 0, max = numbers.length; i < max; i++) {
             var number = numbers[i],
                 nail = nails[i];
-            if (typeof number !== "undefined" && typeof nail !== "undefined") {
-                plural = numeral.choosePlural(number, ["гвоздь", "гвоздя", "гвоздей"]);
+            if (typeof number !== 'undefined' && typeof nail !== 'undefined') {
+                plural = numeral.choosePlural(number, ['гвоздь', 'гвоздя', 'гвоздей']);
                 assert.equal(plural, nail);
             }
         }
@@ -36,15 +36,15 @@ describe('Numeral test', function () {
     it('covers JSRutils.Numeral.getPlural', function () {
         var numeral = JSRutils.Numeral,
             numbers = [-1, 2, 11, 1104, 1111],
-            variants = ["гвоздь", "гвоздя", "гвоздей"],
-            nails = ["-1 гвоздь", "2 гвоздя", "11 гвоздей", "1 104 гвоздя", "1 111 гвоздей"],
-            absence = "нет гвоздей",
+            variants = ['гвоздь', 'гвоздя', 'гвоздей'],
+            nails = ['-1 гвоздь', '2 гвоздя', '11 гвоздей', '1 104 гвоздя', '1 111 гвоздей'],
+            absence = 'нет гвоздей',
             plural;
 
         for (var i = 0, max = numbers.length; i < max; i++) {
             var number = numbers[i],
                 nail = nails[i];
-            if (typeof number !== "undefined" && typeof nail !== "undefined") {
+            if (typeof number !== 'undefined' && typeof nail !== 'undefined') {
                 plural = numeral.getPlural(number, variants);
                 assert.equal(plural, nail);
             }
@@ -59,7 +59,7 @@ describe('Numeral test', function () {
             expect,
             sumString;
         for (var i = 0, max = numbers.length; i < max; i++) {
-            if (typeof nails[i] !== "undefined") {
+            if (typeof nails[i] !== 'undefined') {
                 expect = nails[i];
                 sumString = numeral.sumString(numbers[i], JSRutils.Male, variants);
                 assert.equal(expect, sumString);
@@ -75,7 +75,7 @@ describe('Numeral test', function () {
             expect,
             sumString;
         for (var i = 0, max = numbers.length; i < max; i++) {
-            if (typeof nails[i] !== "undefined") {
+            if (typeof nails[i] !== 'undefined') {
                 expect = nails[i];
                 sumString = numeral.sumString(numbers[i], JSRutils.Female, variants);
                 assert.equal(expect, sumString);
@@ -93,7 +93,7 @@ describe('Numeral test', function () {
             strings = ['ноль целых две десятых', 'десять целых ноль десятых', 'десять целых одна десятая', 'две целых двадцать пять сотых', 'ноль целых одна сотая', 'ноль целых одна десятая', 'ноль целых одна миллиардная'];
         for (var i = 0, max = floats.length; i < max; i++) {
             var expect = numeral.getInWordsFloat(floats[i]);
-            if (typeof strings[i] !== "undefined") {
+            if (typeof strings[i] !== 'undefined') {
                 assert.equal(expect, strings[i]);
             }
         }
