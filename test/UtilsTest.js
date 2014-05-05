@@ -15,7 +15,7 @@ describe('JSRutils.Utils test', function () {
 
     it('covers JSRutils.Utils.arrayFilter correct result', function () {
         var testArr = [];
-        for (var i=1; i<=10; ++i) {
+        for (var i = 1; i <= 10; ++i) {
             testArr.push(i);
         }
         assert.deepEqual(
@@ -28,7 +28,7 @@ describe('JSRutils.Utils test', function () {
 
     it('covers JSRutils.Utils.arrayFilter thisArg', function () {
         var expectedThisArg = {};
-        var actualThisArg = {};
+        var actualThisArg = null;
         JSRutils.Utils.arrayFilter([1, 2, 3], function () {
             actualThisArg = this;
             return false;
