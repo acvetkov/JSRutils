@@ -1,7 +1,8 @@
 /*global describe, it*/
 'use strict';
 var JSRutils = require('../build/JSRutils.min.js').JSRutils;
-var assert = require('assert');
+var chai = require('chai');
+var assert = chai.assert;
 
 describe('JSRutils.Utils test', function () {
     it('covers JSRutils.Utils.trim', function () {
