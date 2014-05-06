@@ -10,6 +10,10 @@ This is a port of the PHP [RUtils](https://github.com/Andre-487/php_rutils) to J
 JSRutils — утилиты для работы c текстом на русском языке для языка Javascript.
 JSRutils — порт утилит [RUtils](https://github.com/Andre-487/php_rutils) на Javascript.
 
+Supported platforms
+----------
+The library was tested on this platforms: Node.js 0.10+, IE 9+, Chrome 7+, FireFox 4+, Opera 20+
+
 Basic usage
 -----------
 

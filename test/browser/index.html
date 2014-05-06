@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>JSRutils test</title>
+        <link rel="stylesheet" href="lib/mocha.css" />
+    </head>
+    <body>
+        <div id="mocha"></div>
+
+        <script src="lib/chai.js"></script>
+        <script src="lib/mocha.js"></script>
+        <script src="../../build/JSRutils.min.js"></script>
+
+        <script>
+            var assert = chai.assert;
+            mocha.setup('bdd');
+        </script>
+
+        <script src="../UtilsTest.js"></script>
+        <script src="../NumeralTest.js"></script>
+        <script>
+            mocha.run();
+        </script>
+    </body>
+</html>

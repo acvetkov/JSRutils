@@ -1,12 +1,13 @@
-/*global describe, it, JSRutils*/
+/*global describe, it*/
 'use strict';
-var fs = require('fs');
-var vm = require('vm');
-var path = './build/JSRutils.min.js';
+if (typeof JSRutils === 'undefined') {
+    var JSRutils = require('../build/JSRutils.min.js').JSRutils;
+}
+if (typeof assert === 'undefined') {
+    var chai = require('chai');
+    var assert = chai.assert;
+}
 
-var code = fs.readFileSync(path);
-vm.runInThisContext(code);
-var assert = require('assert');
 
 describe('JSRutils.Utils test', function () {
     it('covers JSRutils.Utils.trim', function () {
