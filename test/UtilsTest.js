@@ -1,8 +1,13 @@
 /*global describe, it*/
 'use strict';
-var JSRutils = require('../build/JSRutils.min.js').JSRutils;
-var chai = require('chai');
-var assert = chai.assert;
+if (typeof JSRutils === 'undefined') {
+    var JSRutils = require('../build/JSRutils.min.js').JSRutils;
+}
+if (typeof assert === 'undefined') {
+    var chai = require('chai');
+    var assert = chai.assert;
+}
+
 
 describe('JSRutils.Utils test', function () {
     it('covers JSRutils.Utils.trim', function () {
