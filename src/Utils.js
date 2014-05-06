@@ -15,7 +15,7 @@
             if (typeof array.filter === "function") {
                 return array.filter(callback, thisArg);
             }
-            else if (typeof callback === "function") {
+            if (typeof callback === "function") {
                 var result = [];
                 var func = callback.bind(thisArg);
                 for (var i = 0, max = array.length; i < max; i++) {
@@ -24,8 +24,7 @@
                     }
                 }
                 return result;
-            }
-            else {
+            } else {
                 return [];
             }
         }

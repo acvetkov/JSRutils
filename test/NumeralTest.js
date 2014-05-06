@@ -1,4 +1,4 @@
-/*global describe, it, JSRutils*/
+/*global describe, it*/
 'use strict';
 if (typeof JSRutils === 'undefined') {
     var JSRutils = require('../build/JSRutils.min.js').JSRutils;
