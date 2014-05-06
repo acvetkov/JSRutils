@@ -1,11 +1,6 @@
 /*global describe, it, JSRutils*/
 'use strict';
-var fs = require('fs');
-var vm = require('vm');
-var path = './build/JSRutils.min.js';
-
-var code = fs.readFileSync(path);
-vm.runInThisContext(code);
+var JSRutils = require('../build/JSRutils.min.js').JSRutils;
 var assert = require('assert');
 
 describe('JSRutils common test', function () {
