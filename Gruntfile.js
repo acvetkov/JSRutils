@@ -23,7 +23,7 @@ module.exports = function (grunt) {
         },
         concat: {
             dist: {
-                src: ['src/JSRutils.js', 'src/Utils.js', 'src/Numeral.js'],
+                src: ['src/JSRutils.js', 'src/Utils.js', 'src/Numeral.js', 'src/Dt.js'],
                 dest: 'build/<%=pkg.name%>-<%=pkg.version%>.js'
             }
         },
@@ -41,7 +41,7 @@ module.exports = function (grunt) {
                 options: {
                     reporter: 'spec'
                 },
-                src: ['test/*.js']
+                src: ['test/UtilsTest.js', 'test/NumeralTest.js', 'test/DtTest.js']
             }
         }
     });
