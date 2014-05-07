@@ -1,6 +1,10 @@
 Changelog
 ----------
 
+**v0.0.4**
+ * Add Dt module with functions createDate and ruStrFTime
+ * Some improvements in tests and Node.js support
+
 **v0.0.3**
  * Make library "Node friendly"
  * Add testing in the browser environment
