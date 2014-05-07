@@ -16,6 +16,9 @@ The library was tested on this platforms: Node.js 0.10+, IE 9+, Chrome 7+, FireF
 
 Basic usage
 -----------
+Modules of PHP RUtils:
+ - Numeral - Plural forms and in-word representation for numerals
+ - Dt - Russian dates without locales
 
 **Numeral Module**
 
@@ -33,7 +36,6 @@ Numeral.getPlural(2, variants);
 
 Choosing the word form and print number in words:
 ```js
-
 Numeral.sumString(1234, JSRUtils.Male, variants);
 //Result: одна тысяча двести тридцать четыре гвоздя
 
@@ -60,4 +62,30 @@ Print money (RUB):
 ```js
 Numeral.getRubles(100.25);
 //Result: сто рублей двадцать пять копеек
+```
+
+**Dt Module**
+Today date:
+```js
+var params = {
+    date: null,
+    format: 'сегодня %d %F %Y года',
+    monthInflected: true
+};
+var result = JSRutils.Dt.ruStrFTime(params);
+console.log(result);
+// Result: сегодня 7 мая 2014 года
+```
+
+Historical date:
+```js
+var params = {
+    date: '1945-05-09T12:00:00',
+    format: '%l %d %F %Y была одержана победа над немецко-фашистскими захватчиками',
+    monthInflected: true,
+    preposition: true
+};
+var result = JSRutils.Dt.ruStrFTime(params);
+console.log(result);
+// Result: в среду 9 мая 1945 была одержана победа над немецко-фашистскими захватчиками
 ```
