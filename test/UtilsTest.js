@@ -37,5 +37,64 @@
             }, expectedThisArg);
             assert.strictEqual(expectedThisArg, actualThisArg);
         });
+
+        it('covers JSRutils.Utils.isDict', function () {
+            var ArrayLike = function () {
+                this.length = 0;
+                for (var i = 0, n = arguments.length; i < n; ++i) {
+                    this[i] = arguments[i];
+                    ++this.length;
+                }
+            };
+            var arr = new ArrayLike(undefined);
+
+            assert.equal(JSRutils.Utils.isDict({}), true, '{} is not a dict');
+            assert.equal(JSRutils.Utils.isDict([]), false, '[] is a dict');
+            assert.equal(JSRutils.Utils.isDict(arr), false, 'array-like object is a dict');
+            assert.equal(JSRutils.Utils.isDict(true), false, 'true is a dict');
+            assert.equal(JSRutils.Utils.isDict(1), false, '1 is a dict');
+            assert.equal(JSRutils.Utils.isDict(""), false, '"" is a dict');
+            assert.equal(JSRutils.Utils.isDict(function () {}), false, 'function is a dict');
+            assert.equal(JSRutils.Utils.isDict(null), false, 'null is a dict');
+            assert.equal(JSRutils.Utils.isDict(undefined), false, 'undefined is a dict');
+        });
+
+        it('covers JSRutils.Utils.mergeObjects', function () {
+            var dst = {
+                a: 'apple',
+                b: 'banana',
+                nested: {
+                    c: 'crow',
+                    z: 'Zorro'
+                }
+            };
+            var src = {
+                c: 'crow',
+                nested: {
+                    empty: [],
+                    a: 'arrow',
+                    nested: {
+                        'null': null
+                    }
+                }
+            };
+            var result = JSRutils.Utils.mergeObjects(dst, src);
+
+            var expected = {
+                a: 'apple',
+                b: 'banana',
+                c: 'crow',
+                nested: {
+                    a: 'arrow',
+                    c: 'crow',
+                    empty: [],
+                    z: 'Zorro',
+                    nested: {
+                        'null': null
+                    }
+                }
+            };
+            assert.deepEqual(result, expected);
+        });
     });
 })();
