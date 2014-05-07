@@ -266,5 +266,6 @@
         HUNDREDS : ['', 'сто', 'двести', 'триста', 'четыреста', 'пятьсот', 'шестьсот', 'семьсот', 'восемьсот', 'девятьсот']
     };
 
+    JSRutils.NumeralClass = Numeral;
     JSRutils.Numeral = new Numeral();
 })(JSRutils);
