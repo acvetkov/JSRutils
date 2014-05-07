@@ -9,6 +9,16 @@ if (typeof assert === 'undefined') {
 
 (function () {
     'use strict';
+    describe('JSRutils common test', function () {
+        it('covers JSRutils.formatNumber', function () {
+            assert.equal(JSRutils.formatNumber(5), '5');
+            assert.equal(JSRutils.formatNumber(50), '50');
+            assert.equal(JSRutils.formatNumber(5100), '5 100');
+            assert.equal(JSRutils.formatNumber(500000), '500 000');
+            assert.equal(JSRutils.formatNumber(5500000), '5 500 000');
+        });
+    });
+
     describe('JSRutils.Utils test', function () {
         it('covers JSRutils.Utils.trim', function () {
             assert.equal(JSRutils.Utils.trim('\r \n \r\n 123 \r\n '), '123');
