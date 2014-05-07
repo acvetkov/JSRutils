@@ -1,39 +1,41 @@
 /*global describe, it*/
-'use strict';
-if (typeof JSRutils === 'undefined') {
-    var JSRutils = require('../build/JSRutils.min.js').JSRutils;
-}
-if (typeof assert === 'undefined') {
-    var chai = require('chai');
-    var assert = chai.assert;
-}
+(function () {
+    'use strict';
+    if (typeof JSRutils === 'undefined') {
+        var JSRutils = require('../build/JSRutils.min.js').JSRutils;
+    }
+    if (typeof assert === 'undefined') {
+        var chai = require('chai');
+        var assert = chai.assert;
+    }
 
 
-describe('JSRutils.Utils test', function () {
-    it('covers JSRutils.Utils.trim', function () {
-        assert.equal(JSRutils.Utils.trim('\r \n \r\n 123 \r\n '), '123');
+    describe('JSRutils.Utils test', function () {
+        it('covers JSRutils.Utils.trim', function () {
+            assert.equal(JSRutils.Utils.trim('\r \n \r\n 123 \r\n '), '123');
+        });
+
+        it('covers JSRutils.Utils.arrayFilter correct result', function () {
+            var testArr = [];
+            for (var i = 1; i <= 10; ++i) {
+                testArr.push(i);
+            }
+            assert.deepEqual(
+                JSRutils.Utils.arrayFilter(testArr, function (elem) {
+                    return elem % 2 === 0;
+                }),
+                [2, 4, 6, 8, 10]
+            );
+        });
+
+        it('covers JSRutils.Utils.arrayFilter thisArg', function () {
+            var expectedThisArg = {};
+            var actualThisArg = null;
+            JSRutils.Utils.arrayFilter([1, 2, 3], function () {
+                actualThisArg = this;
+                return false;
+            }, expectedThisArg);
+            assert.strictEqual(expectedThisArg, actualThisArg);
+        });
     });
-
-    it('covers JSRutils.Utils.arrayFilter correct result', function () {
-        var testArr = [];
-        for (var i = 1; i <= 10; ++i) {
-            testArr.push(i);
-        }
-        assert.deepEqual(
-            JSRutils.Utils.arrayFilter(testArr, function (elem) {
-                return elem % 2 === 0;
-            }),
-            [2, 4, 6, 8, 10]
-        );
-    });
-
-    it('covers JSRutils.Utils.arrayFilter thisArg', function () {
-        var expectedThisArg = {};
-        var actualThisArg = null;
-        JSRutils.Utils.arrayFilter([1, 2, 3], function () {
-            actualThisArg = this;
-            return false;
-        }, expectedThisArg);
-        assert.strictEqual(expectedThisArg, actualThisArg);
-    });
-});
+})();
