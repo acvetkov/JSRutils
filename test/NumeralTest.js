@@ -1,15 +1,14 @@
 /*global describe, it, JSRutils*/
+if (typeof JSRutils === 'undefined') {
+    var JSRutils = require('../build/JSRutils.min.js').JSRutils;
+}
+if (typeof assert === 'undefined') {
+    var chai = require('chai');
+    var assert = chai.assert;
+}
+
 (function () {
     'use strict';
-    if (typeof JSRutils === 'undefined') {
-        var JSRutils = require('../build/JSRutils.min.js').JSRutils;
-    }
-    if (typeof assert === 'undefined') {
-        var chai = require('chai');
-        var assert = chai.assert;
-    }
-
-
     describe('JSRutils common test', function () {
         it('covers JSRutils.formatNumber', function () {
             assert.equal(JSRutils.formatNumber(5), '5');
