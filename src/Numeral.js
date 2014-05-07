@@ -1,5 +1,5 @@
 /*global JSRutils*/
-(function() {
+(function(JSRutils) {
     "use strict";
     var Numeral = function() {
 
@@ -267,4 +267,4 @@
     };
 
     JSRutils.Numeral = new Numeral();
-})();
+})(JSRutils);

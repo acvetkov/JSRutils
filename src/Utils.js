@@ -1,5 +1,5 @@
 /*global JSRutils*/
-(function () {
+(function (JSRutils) {
     "use strict";
     JSRutils.Utils = {
         trim: function (string) {
@@ -30,4 +30,4 @@
             }
         }
     };
-})();
+})(JSRutils);
