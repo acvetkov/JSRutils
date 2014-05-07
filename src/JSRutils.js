@@ -14,7 +14,7 @@ var JSRutils;
          */
         formatNumber: formatNumber
     };
-    if (typeof module !== 'undefined' && module.exports) {
+    if (typeof module === 'object' && typeof module.exports === 'object') {
         module.exports.JSRutils = JSRutils;
     }
 
