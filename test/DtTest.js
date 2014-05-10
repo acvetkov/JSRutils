@@ -63,6 +63,17 @@ if (typeof assert === 'undefined') {
             testVariants(params, testData);
         });
 
+        it('covers JSRutils.Dt.ruStrFTime repeated patterns', function () {
+            var testData = {
+                '%d.%m.%Y %d.%m.%Y': '01.01.1988 01.01.1988'
+            };
+
+            var params = {
+                date: '1988-01-01T06:40:34'
+            };
+            testVariants(params, testData);
+        });
+
         it('covers JSRutils.Dt.ruStrFTime preposition', function () {
             var testData = {
                 'тест %D': 'тест в\u00a0пт',

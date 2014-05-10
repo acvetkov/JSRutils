@@ -73,35 +73,36 @@
         };
 
         var matches = formatRegexp.exec(options.format);
-        var needle;
+        var needle, pattern;
         var replacement;
         while (matches) {
             needle = matches[0];
             if (replaced.indexOf(needle) === -1) {
+                pattern = new RegExp(needle, 'g');
                 //noinspection FallthroughInSwitchStatementJS
                 switch (needle) {
                     case '%Y':
-                        result = result.replace(needle, date.getFullYear().toString());
+                        result = result.replace(pattern, date.getFullYear().toString());
                         break;
                     case '%m':
-                        replaceXxInResult(needle, date.getMonth() + 1);
+                        replaceXxInResult(pattern, date.getMonth() + 1);
                         break;
                     case '%d':
                         if (options.format.indexOf('%M') === -1 && options.format.indexOf('%F') === -1) {
-                            replaceXxInResult(needle, date.getDate());
+                            replaceXxInResult(pattern, date.getDate());
                         }
                         else {
-                            result = result.replace(needle, date.getDate().toString());
+                            result = result.replace(pattern, date.getDate().toString());
                         }
                         break;
                     case '%H':
-                        replaceXxInResult(needle, date.getHours());
+                        replaceXxInResult(pattern, date.getHours());
                         break;
                     case '%i':
-                        replaceXxInResult(needle, date.getMinutes());
+                        replaceXxInResult(pattern, date.getMinutes());
                         break;
                     case '%s':
-                        replaceXxInResult(needle, date.getSeconds());
+                        replaceXxInResult(pattern, date.getSeconds());
                         break;
                     case '%D':
                     case '%l':
@@ -113,7 +114,7 @@
                             var dayIdx = (options.dayInflected || options.preposition) ? 2 : 1;
                             replacement = preposition + this.DAY_NAMES[weekDay][dayIdx];
                         }
-                        result = result.replace(needle, replacement);
+                        result = result.replace(pattern, replacement);
                         break;
                     case '%M':
                     case '%F':
@@ -124,7 +125,7 @@
                             var monthIdx = options.monthInflected ? 2 : 1;
                             replacement = this.MONTH_NAMES[month][monthIdx];
                         }
-                        result = result.replace(needle, replacement);
+                        result = result.replace(pattern, replacement);
                         break;
                 }
                 replaced.push(needle);
