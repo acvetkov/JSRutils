@@ -1,6 +1,9 @@
 Changelog
 ----------
 
+**v0.0.5**
+ * Fix bug in Dt.ruStrFTime with repeated patterns
+
 **v0.0.4**
  * Add Dt module with functions createDate and ruStrFTime
  * Some improvements in tests and Node.js support
